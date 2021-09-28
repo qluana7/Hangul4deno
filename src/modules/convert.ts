@@ -104,7 +104,7 @@ export function toKorean(str: string): string {
                     }
                 }
                 
-                kchar.final = InteractLists.finals.indexOf(arr[i]);
+                kchar.final = InteractLists.finals.indexOf(s);
                 ext = true;
                 i += s.length - 1;
             } else if (kchar.inital !== -1) {
