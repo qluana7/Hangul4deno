@@ -4,6 +4,7 @@
   <img alt="GitHub" src="https://img.shields.io/github/license/Lukince/Hangul4deno">
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Lukince/Hangul4deno">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Lukince/Hangul4deno">
+  <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLukince%2FHangul4deno&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </p>
 
   <i>Please check [README.md](https://github.com/Lukince/Hangul4deno/blob/master/README.md) on github if possible. it changes frequently.</i>
@@ -51,3 +52,6 @@ const builder2 = new HangulBuilder('ㄴ', 'ㅕ', 'ㅇ');
 console.log([builder1.build(), builder2.build()].join(''));
 // log : 안녕
 ```
+
+# Contributors
+  [![andjsrk](https://github.com/andjsrk.png?size=32)](https://github.com/andjsrk)
