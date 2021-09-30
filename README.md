@@ -1,9 +1,9 @@
 <p align="center">
   <span><i><b>The powerful hangul library</i></b></span>
   <br><Br>
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/lukince/Hangul4deno">
-  <img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/lukince/Hangul4deno">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/lukince/Hangul4deno">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Lukince/Hangul4deno">
+  <img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/Lukince/Hangul4deno">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Lukince/Hangul4deno">
 </p>
 
 # Features
