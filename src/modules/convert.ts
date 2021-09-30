@@ -2,33 +2,33 @@ import { InteractLists, PrivateInteractLists } from "../entities/interactList.ts
 
 const FINAL:   number = 28;
 const NEUTRAL: number = 21;
-const INITAL:  number = FINAL * NEUTRAL;
+const INITIAL:  number = FINAL * NEUTRAL;
 
-const INITAL_COUNT:  number = 19;
+const INITIAL_COUNT:  number = 19;
 const NEUTRAL_COUNT: number = 21;
 const FINAL_COUNT:   number = 28;
 
-class KoreanChar {
+export class KoreanChar {
     constructor(
         ini: number = -1,
         neu: number = -1,
         fin: number = -1
         ) {
-        if (ini < -1 || ini >= INITAL_COUNT  ||
+        if (ini < -1 || ini >= INITIAL_COUNT ||
             neu < -1 || neu >= NEUTRAL_COUNT ||
             fin < -1 || fin >= FINAL_COUNT) return;
         
-        this.inital    = ini;
+        this.initial   = ini;
         this.neutral   = neu;
         this.final     = fin;
         this.defined = true;
     }
     
-    inital:    number = -1;
+    initial:   number = -1;
     neutral:   number = -1;
     final:     number = -1;
     
-    readonly firstInital  : number = 12593 // 'ㄱ'
+    readonly firstInitial : number = 12593 // 'ㄱ'
     readonly firstNeutral : number = 12623 // 'ㅏ'
     readonly firstHangul  : number = 44032 // '가'
     
@@ -37,28 +37,28 @@ class KoreanChar {
     toChar(): string | null {
         if (!this.defined) return null;
         
-        if (this.inital === -1) {
+        if (this.initial === -1) {
             if (this.neutral === -1 && this.final === -1)
                 return null;
             else if (this.neutral === -1 && this.final !== -1)
-                return String.fromCharCode(this.firstInital + this.final + 1);
+                return String.fromCharCode(this.firstInitial + this.final + 1);
             else if (this.neutral !== -1 && this.final === -1)
                 return String.fromCharCode(this.firstNeutral + this.neutral);
             else
                 return null;
         } else if (this.neutral === -1) {
             if (this.final === -1) {
-                return InteractLists.initalKo[this.inital];
+                return InteractLists.initialKo[this.initial];
             } else {
                 return null;
             }
         } else if (this.final === -1) {
             return String.fromCharCode(
-                this.firstHangul + this.inital * INITAL + this.neutral * FINAL
+                this.firstHangul + this.initial * INITIAL + this.neutral * FINAL
             );
         } else {
             return String.fromCharCode(
-                this.firstHangul + this.inital * INITAL + this.neutral * FINAL + this.final + 1
+                this.firstHangul + this.initial * INITIAL + this.neutral * FINAL + this.final + 1
             );
         }
     }
@@ -92,11 +92,11 @@ export function toKorean(str: string): string {
         if (i + 1 < arr.length)
             s = arr[i] + arr[i + 1];
         
-        if (InteractLists.initals.includes(arr[i])) {
+        if (InteractLists.initials.includes(arr[i])) {
             if (PrivateInteractLists.complexFinals.includes(s)) {
                 if (s === "E" || s === "Q" || s === "W") i--;
                 
-                if (i + 2 < arr.length && kchar.inital !== -1) {
+                if (i + 2 < arr.length && kchar.initial !== -1) {
                     if (InteractLists.neutrals.includes(arr[i + 2])) {
                         kchar.final = InteractLists.finals.indexOf(arr[i]);
                         extract();
@@ -107,10 +107,10 @@ export function toKorean(str: string): string {
                 kchar.final = InteractLists.finals.indexOf(s);
                 ext = true;
                 i += s.length - 1;
-            } else if (kchar.inital !== -1) {
+            } else if (kchar.initial !== -1) {
                 if (kchar.neutral === -1) {
                     extract();
-                    kchar.inital = InteractLists.initals.indexOf(arr[i]);
+                    kchar.initial = InteractLists.initials.indexOf(arr[i]);
                 } else if (PrivateInteractLists.allFinals.includes(arr[i])) {
                     if (i + 1 < arr.length) {
                         if (InteractLists.neutrals.includes(arr[i + 1])) {
@@ -135,7 +135,7 @@ export function toKorean(str: string): string {
                 
                 ext = true;
             } else {
-                kchar.inital = InteractLists.initals.indexOf(arr[i]);
+                kchar.initial = InteractLists.initials.indexOf(arr[i]);
             }
         } else if (InteractLists.neutrals.includes(arr[i])) {
             if (InteractLists.neutrals.includes(s)) {
@@ -145,7 +145,7 @@ export function toKorean(str: string): string {
                 kchar.neutral = InteractLists.neutrals.indexOf(arr[i]);
             }
             
-            if (kchar.inital === -1) {
+            if (kchar.initial === -1) {
                 ext = true;
             } else {
                 ext = false;

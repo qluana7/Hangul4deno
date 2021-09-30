@@ -2,7 +2,9 @@ import {
     Assembler
 } from "../mod.ts"
 
-console.log(Assembler.assemble("ㅇㅏㄴㄴㅕㅇ ㅅㅔㄱㅖ!"));
+console.log(
+    Assembler.assemble(['ㅇ','ㅏ','ㄴ','ㄴ','ㅕ','ㅇ',' ',
+                    'ㅅ','ㅔ','ㄱ','ㅖ','!']))
 console.log(
     Assembler.assemble(["ㅇ", "ㅏ", "ㄹ", " ",
                     "ㅅ", "ㅜ", " ",
