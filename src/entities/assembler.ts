@@ -17,7 +17,7 @@ export class Assembler {
     }
     
     /**
-     * This will disassemble hanugl.
+     * This will disassemble hangul.
      * @example Assembler.disassemble('안') // ['ㅇ','ㅏ','ㄴ']
      * @param str The string value which want to disassemble
      * @returns Disassembled hangul
