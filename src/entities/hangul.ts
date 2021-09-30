@@ -3,6 +3,10 @@ import { disassemble } from "../assemblers/disassemble.ts"
 import { InteractLists } from "./interactList.ts"
 import { HangulBuilder } from "./hangulBuilder.ts"
 
+function insert(origin: string, ind: number, value: string): string {
+    return [origin.slice(0, ind), value, origin.slice(ind)].join('');
+}
+
 /**
  * Specific string class which provides function for hangul
  */
@@ -52,9 +56,9 @@ export class Hangul {
      */
     insert(index: number, value: string | HangulBuilder): void {
         if (value instanceof HangulBuilder) {
-            this.String = this.String.insert(index, value.build())
+            this.String = insert(this.String, index, value.build())
         } else {
-            this.String = this.String.insert(index, value);
+            this.String = insert(this.String, index, value);
         }
     }
     
@@ -100,16 +104,16 @@ export class Hangul {
     }
 }
 
+// Because of stability, decided to remove it.
+
+/*
 declare global {
     interface String {
         toHangul(): Hangul;
-        insert(ind: number, s: string): string;
     }
 }
 
 String.prototype.toHangul = function (): Hangul {
     return new Hangul(this.toString());
 }
-String.prototype.insert = function (ind: number, s: string): string {
-    return [this.slice(0, ind), s, this.slice(ind)].join('');
-}
+*/

@@ -2,7 +2,7 @@ import {
     Hangul
 } from "../mod.ts"
 
-const han = "테스트".toHangul();
+const han = new Hangul("테스트");
 
 console.log(han.toString());
 
