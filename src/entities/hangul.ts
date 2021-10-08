@@ -1,7 +1,9 @@
-import { toKorean } from "../modules/convert.ts"
-import { disassemble } from "../assemblers/disassemble.ts"
+import { toKorean }      from "../modules/convert.ts"
+import { Assembler }     from "../entities/assembler.ts"
 import { InteractLists } from "./interactList.ts"
 import { HangulBuilder } from "./hangulBuilder.ts"
+import { StringType,
+         getType }       from "./stringType.ts"
 
 function insert(origin: string, ind: number, value: string): string {
     return [origin.slice(0, ind), value, origin.slice(ind)].join('');
@@ -16,17 +18,17 @@ export class Hangul {
      * @param s Initial value
      */
     constructor(s: string) {
-        this.String = s;
+        this.content = s;
     }
     
-    private String: string;
+    private content: string;
     
     /**
      * Convert string of this class to Korean
      * @returns Korean string
      */
     toKor(): string {
-        return Hangul.engToKor(this.String);
+        return Hangul.engToKor(this.content);
     }
     
     /**
@@ -34,7 +36,7 @@ export class Hangul {
      * @returns English string
      */
     toEng(): string {
-        return Hangul.korToEng(this.String);
+        return Hangul.korToEng(this.content);
     }
     
     /**
@@ -43,9 +45,9 @@ export class Hangul {
      */
     append(value: string | HangulBuilder): void {
         if (value instanceof HangulBuilder) {
-            this.String += value.build();
+            this.content += value.build();
         } else {
-            this.String += value;
+            this.content += value;
         }
     }
     
@@ -56,9 +58,9 @@ export class Hangul {
      */
     insert(index: number, value: string | HangulBuilder): void {
         if (value instanceof HangulBuilder) {
-            this.String = insert(this.String, index, value.build())
+            this.content = insert(this.content, index, value.build())
         } else {
-            this.String = insert(this.String, index, value);
+            this.content = insert(this.content, index, value);
         }
     }
     
@@ -67,7 +69,25 @@ export class Hangul {
      * @returns The string value of this class
      */
     toString(): string {
-        return this.String;
+        return this.content;
+    }
+    
+    
+    /**
+     * Converts Korean and English mixed strings into normal strings
+     * @example Hangul.fix('dㅏㄴ') // '안'
+     * @returns Fixed value
+     */
+    fix(): void {
+        this.content = Hangul.fix(this.content);
+    }
+    
+    /**
+     * Get type of current value. Refer StringType.
+     * @returns The type of string.
+     */
+    getType(): StringType {
+        return Hangul.getType(this.content);
     }
     
     /**
@@ -87,7 +107,7 @@ export class Hangul {
      * @returns English string
      */
     static korToEng(str: string): string {
-        const c = disassemble(str);
+        const c = Assembler.disassemble(str);
         let r = [];
     
         for (let i = 0; i < c.length; i++) {
@@ -102,18 +122,23 @@ export class Hangul {
         
         return r.reduce((p, c) => p + c);
     }
-}
-
-// Because of stability, decided to remove it.
-
-/*
-declare global {
-    interface String {
-        toHangul(): Hangul;
+    
+    /**
+     * Converts Korean and English mixed strings into normal strings
+     * @example Hangul.fix('dㅏㄴ') // '안'
+     * @param str The value want to fix.
+     * @returns Fixed value
+     */
+    static fix(str: string): string {
+        return Assembler.assemble(Assembler.disassemble(str));
+    }
+    
+    /**
+     * Get type of string object. Refer StringType.
+     * @param str The value want to determine the type
+     * @returns The type of string.
+     */
+    static getType(str: string): StringType {
+        return getType(str);
     }
 }
-
-String.prototype.toHangul = function (): Hangul {
-    return new Hangul(this.toString());
-}
-*/
