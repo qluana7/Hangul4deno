@@ -4,6 +4,8 @@ import { InteractLists } from "./interactList.ts"
 import { HangulBuilder } from "./hangulBuilder.ts"
 import { StringType,
          getType }       from "./stringType.ts"
+import { random,
+         RandomOption }  from "../modules/random.ts"
 
 function insert(origin: string, ind: number, value: string): string {
     return [origin.slice(0, ind), value, origin.slice(ind)].join('');
@@ -41,7 +43,7 @@ export class Hangul {
     
     /**
      * Append value to string of this class
-     * @param value The value want to append. Also can use HangulBuilder
+     * @param value The value that want to append. Also can use HangulBuilder
      */
     append(value: string | HangulBuilder): void {
         if (value instanceof HangulBuilder) {
@@ -53,8 +55,8 @@ export class Hangul {
     
     /**
      * Insert value to specific location of string of this class
-     * @param index The index want to append string
-     * @param value The value want to append. Also can use HangulBuilder
+     * @param index The index that want to append string
+     * @param value The value that want to append. Also can use HangulBuilder
      */
     insert(index: number, value: string | HangulBuilder): void {
         if (value instanceof HangulBuilder) {
@@ -93,7 +95,7 @@ export class Hangul {
     /**
      * Convert specific value to Korean.
      * @example Hangul.engToKor('dks') // '안'
-     * @param str The value want to convert
+     * @param str The value that want to convert
      * @returns Korean string
      */
     static engToKor(str: string): string {
@@ -103,7 +105,7 @@ export class Hangul {
     /**
      * Convert specific value to English.
      * @example Hangul.korToEng('안') // 'dks'
-     * @param str The value want to convert
+     * @param str The value that want to convert
      * @returns English string
      */
     static korToEng(str: string): string {
@@ -126,7 +128,7 @@ export class Hangul {
     /**
      * Converts Korean and English mixed strings into normal strings
      * @example Hangul.fix('dㅏㄴ') // '안'
-     * @param str The value want to fix.
+     * @param str The value that want to fix.
      * @returns Fixed value
      */
     static fix(str: string): string {
@@ -135,10 +137,29 @@ export class Hangul {
     
     /**
      * Get type of string object. Refer StringType.
-     * @param str The value want to determine the type
+     * @param str The value that want to determine the type
      * @returns The type of string.
      */
     static getType(str: string): StringType {
         return getType(str);
+    }
+    
+    /**
+     * Get random hangul
+     * @param count The count that want to get
+     */
+    static random(count: number): Hangul
+    /**
+     * Get random hangul with option
+     * @param count The count that want to get
+     * @param opt The option for random
+     */
+    static random(count: number, opt:  RandomOption): Hangul
+    static random(count: number, opt?: RandomOption): Hangul {
+        if (opt === undefined) {
+            return random(count);
+        } else {
+            return random(count, opt);
+        }
     }
 }

@@ -16,6 +16,17 @@ export class PrivateInteractLists {
         this.allFinalKo.map((v, i) => [v, this.allFinals[i]]);
 }
 
+export class ComplexInteractionLists {
+    static complexInitialKo: string[] =
+        [ "ㄲ", "ㄸ", "ㅃ", "ㅆ", "ㅉ" ];
+    
+    static complexNeutralKo: string[] =
+        [ "ㅐ", "ㅒ", "ㅔ", "ㅖ", "ㅘ", "ㅙ", "ㅚ", "ㅝ", "ㅞ", "ㅟ", "ㅢ" ];
+    
+    static complexFinalKo: string[] =
+        ["ㄳ", "ㄵ", "ㄶ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅄ"];
+}
+
 /**
  * The class of collection of hangul or english pieces
  */
@@ -56,3 +67,11 @@ export class InteractLists {
     static allInteractions: [string, string][] =
         PrivateInteractLists.allFinalInteract.concat(this.neutralKo.map((v, i) => [v, this.neutrals[i]]));
 }
+
+export type Initial = "ㄱ" | "ㄲ" | "ㄴ" | "ㄷ" | "ㄸ" | "ㄹ" | "ㅁ" | "ㅂ" | "ㅃ" | "ㅅ" |
+                      "ㅆ" | "ㅇ" | "ㅈ" | "ㅉ" | "ㅊ" | "ㅋ" | "ㅌ" | "ㅍ" | "ㅎ";
+export type Neutral = "ㅏ" | "ㅐ" | "ㅑ" | "ㅒ" | "ㅓ" | "ㅔ" | "ㅕ" | "ㅖ" | "ㅗ" | "ㅘ" | "ㅙ" |
+                      "ㅚ" | "ㅛ" | "ㅜ" | "ㅝ" | "ㅞ" | "ㅟ" | "ㅠ" | "ㅡ" | "ㅢ" | "ㅣ";
+export type Final   = "ㄱ" | "ㄲ" | "ㄳ" | "ㄴ" | "ㄵ" | "ㄶ" | "ㄷ" | "ㄹ" | "ㄺ" | "ㄻ" | "ㄼ" |
+                      "ㄽ" | "ㄾ" | "ㄿ" | "ㅀ" | "ㅁ" | "ㅂ" | "ㅄ" | "ㅅ" | "ㅆ" | "ㅇ" | "ㅈ" |
+                      "ㅊ" | "ㅋ" | "ㅌ" | "ㅍ" | "ㅎ";

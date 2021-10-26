@@ -65,7 +65,7 @@ export class KoreanChar {
 }
 
 export function toKorean(str: string): string {
-    const extract: Function = () => {
+    const extract = () => {
         let c = kchar.toChar();
         
         if (c !== null)
@@ -108,10 +108,7 @@ export function toKorean(str: string): string {
                 ext = true;
                 i += s.length - 1;
             } else if (kchar.initial !== -1) {
-                if (kchar.neutral === -1) {
-                    extract();
-                    kchar.initial = InteractLists.initials.indexOf(arr[i]);
-                } else if (PrivateInteractLists.allFinals.includes(arr[i])) {
+                if (PrivateInteractLists.allFinals.includes(arr[i])) {
                     if (i + 1 < arr.length) {
                         if (InteractLists.neutrals.includes(arr[i + 1])) {
                             i--;
@@ -131,7 +128,10 @@ export function toKorean(str: string): string {
                     }
                     
                     kchar.final = InteractLists.finals.indexOf(s);
-                }
+                } else if (kchar.neutral === -1) {
+                    extract();
+                    kchar.initial = InteractLists.initials.indexOf(arr[i]);
+                } 
                 
                 ext = true;
             } else {
