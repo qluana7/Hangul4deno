@@ -68,10 +68,21 @@ export class InteractLists {
         PrivateInteractLists.allFinalInteract.concat(this.neutralKo.map((v, i) => [v, this.neutrals[i]]));
 }
 
+/**
+ * The initials for random hangul option.
+ */
 export type Initial = "ㄱ" | "ㄲ" | "ㄴ" | "ㄷ" | "ㄸ" | "ㄹ" | "ㅁ" | "ㅂ" | "ㅃ" | "ㅅ" |
                       "ㅆ" | "ㅇ" | "ㅈ" | "ㅉ" | "ㅊ" | "ㅋ" | "ㅌ" | "ㅍ" | "ㅎ";
+
+/**
+ * The neutrals for random hangul option.
+ */
 export type Neutral = "ㅏ" | "ㅐ" | "ㅑ" | "ㅒ" | "ㅓ" | "ㅔ" | "ㅕ" | "ㅖ" | "ㅗ" | "ㅘ" | "ㅙ" |
                       "ㅚ" | "ㅛ" | "ㅜ" | "ㅝ" | "ㅞ" | "ㅟ" | "ㅠ" | "ㅡ" | "ㅢ" | "ㅣ";
+
+/**
+ * The finals for random hangul option.
+ */
 export type Final   = "ㄱ" | "ㄲ" | "ㄳ" | "ㄴ" | "ㄵ" | "ㄶ" | "ㄷ" | "ㄹ" | "ㄺ" | "ㄻ" | "ㄼ" |
                       "ㄽ" | "ㄾ" | "ㄿ" | "ㅀ" | "ㅁ" | "ㅂ" | "ㅄ" | "ㅅ" | "ㅆ" | "ㅇ" | "ㅈ" |
                       "ㅊ" | "ㅋ" | "ㅌ" | "ㅍ" | "ㅎ";
