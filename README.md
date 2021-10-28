@@ -19,7 +19,7 @@
 ### Assemble, Disassemble Hangul
 
 ```ts
-import { Assembler } from "https://deno.land/x/hangul@1.0.0/mod.ts"
+import { Assembler } from "https://deno.land/x/hangul@1.2.0/mod.ts"
 
 const hello = Assembler.assemble(['ㅇ', 'ㅏ', 'ㄴ', 'ㄴ', 'ㅕ', 'ㅇ']);
 
@@ -32,7 +32,7 @@ const dishello = Assembler.disassemble("안녕하세요");
 **Note : This is not a translation. This'll assemble after converting according to the QWERTY keyboard**
 
 ```ts
-import { Hangul } from "https://deno.land/x/hangul@1.0.0/mod.ts"
+import { Hangul } from "https://deno.land/x/hangul@1.2.0/mod.ts"
 
 console.log(Hangul.engToKor("dkssud tprP!"));
 // log : 안녕 세계!
@@ -44,7 +44,7 @@ console.log(Hangul.korToEng("안녕 세계!"));
 ### Build hangul with initial, neutral and final
 
 ```ts
-import { HangulBuilder } from "https://deno.land/x/hangul@1.0.0/mod.ts"
+import { HangulBuilder } from "https://deno.land/x/hangul@1.2.0/mod.ts"
 
 const builder1 = new HangulBuilder();
 
