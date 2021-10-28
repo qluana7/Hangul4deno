@@ -1,11 +1,10 @@
-import { toKorean }      from "../modules/convert.ts"
 import { Assembler }     from "../entities/assembler.ts"
-import { InteractLists } from "./interactList.ts"
 import { HangulBuilder } from "./hangulBuilder.ts"
 import { StringType,
          getType }       from "./stringType.ts"
 import { random,
          RandomOption }  from "../modules/random.ts"
+import { Converter } from "./converter.ts";
 
 function insert(origin: string, ind: number, value: string): string {
     return [origin.slice(0, ind), value, origin.slice(ind)].join('');
@@ -94,35 +93,42 @@ export class Hangul {
     
     /**
      * Convert specific value to Korean.
+     * @example Hangul.engToKor(new Hangul('dks')) // '안'
+     * @param str The value that want to convert
+     * @returns Hangul object that contains korean string
+     */
+    static engToKor(str: Hangul): Hangul
+    /**
+     * Convert specific value to Korean.
      * @example Hangul.engToKor('dks') // '안'
      * @param str The value that want to convert
      * @returns Korean string
      */
-    static engToKor(str: string): string {
-        return toKorean(str);
+    static engToKor(str: string): string
+    static engToKor(str: string | Hangul): string | Hangul {
+        const s: string = Converter.toKorean(str instanceof Hangul ? str.content : str);
+        
+        return str instanceof Hangul ? new Hangul(s) : s;
     }
     
+    /**
+     * Convert specific value to English.
+     * @example Hangul.korToEng(new Hangul('안')) // 'dks'
+     * @param str The value that want to convert
+     * @returns Hangul object that contains english string
+     */
+    static korToEng(str: Hangul): Hangul
     /**
      * Convert specific value to English.
      * @example Hangul.korToEng('안') // 'dks'
      * @param str The value that want to convert
      * @returns English string
      */
-    static korToEng(str: string): string {
-        const c = Assembler.disassemble(str);
-        let r = [];
-    
-        for (let i = 0; i < c.length; i++) {
-            const ko = InteractLists.allInteractions.map(v => v[0]);
-            const en = InteractLists.allInteractions.map(v => v[1]);
-            r.push(
-                ko.includes(c[i]) ?
-                en[ko.indexOf(c[i])] :
-                c[i]
-                );
-        }
+    static korToEng(str: string): string
+    static korToEng(str: string | Hangul): string | Hangul {
+        const s: string = Converter.toEnglish(str instanceof Hangul ? str.content : str);
         
-        return r.reduce((p, c) => p + c);
+        return str instanceof Hangul ? new Hangul(s) : s;
     }
     
     /**

@@ -1,6 +1,4 @@
-import { assemble } from "../assemblers/assemble.ts"
-import { disassemble } from "../assemblers/disassemble.ts"
-import {} from "../assemblers/disassemble.ts"
+import { assemble, disassemble } from "../modules/assemble.ts"
 
 /**
  * Provide hangul assemble and disassemble function.
