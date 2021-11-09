@@ -5,6 +5,8 @@ import { StringType,
 import { random,
          RandomOption }  from "../modules/random.ts"
 import { Converter } from "./converter.ts";
+import { Infection } from "./replacer.ts";
+import { Initial, Neutral, Final } from "./interactList.ts";
 
 function insert(origin: string, ind: number, value: string): string {
     return [origin.slice(0, ind), value, origin.slice(ind)].join('');
@@ -20,9 +22,12 @@ export class Hangul {
      */
     constructor(s: string) {
         this.content = s;
+        this.infection = new Infection<Initial | Neutral | Final>(s, l => l);
     }
     
     private content: string;
+    
+    private infection: Infection<Initial | Neutral | Final>;
     
     /**
      * Convert string of this class to Korean
@@ -89,6 +94,16 @@ export class Hangul {
      */
     getType(): StringType {
         return Hangul.getType(this.content);
+    }
+    
+    /** Refer `Replacer.infect` */
+    infect(from: Initial | Neutral | Final, to: Initial | Neutral | Final): void {
+        this.infection.replacer = undefined;
+        this.infection.from = from;
+        this.infection.to = to;
+        this.infection.infect();
+        
+        this.content = this.infection.toString();
     }
     
     /**

@@ -1,4 +1,5 @@
 import { assemble, disassemble } from "../modules/assemble.ts"
+import { Hangul } from "./hangul.ts"
 
 /**
  * Provide hangul assemble and disassemble function.
@@ -16,11 +17,19 @@ export class Assembler {
     
     /**
      * This will disassemble hangul.
-     * @example Assembler.disassemble('안') // ['ㅇ','ㅏ','ㄴ']
-     * @param str The string value which want to disassemble
+     * @example Assembler.disassemble(new Hangul('안')) //['ㅇ','ㅏ','ㄴ']
+     * @param han The hangul class to disassemble
      * @returns Disassembled hangul
      */
-    static disassemble(str: string): string[] {
-        return disassemble(str);
+    static disassemble(han: Hangul): string[]
+    /**
+     * This will disassemble hangul.
+     * @example Assembler.disassemble('안') // ['ㅇ','ㅏ','ㄴ']
+     * @param str The string value to disassemble
+     * @returns Disassembled hangul
+     */
+    static disassemble(str: string): string[]
+    static disassemble(obj: Hangul | string): string[] {
+        return disassemble(obj instanceof Hangul ? obj.toString() : obj);
     }
 }
