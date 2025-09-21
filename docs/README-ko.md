@@ -12,6 +12,8 @@
   <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLukince%2FHangul4deno&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </p>
 
+<br/>
+
   <i>[README.md](https://github.com/Lukince/Hangul4deno/blob/master/README.md)는 자주 변경됩니다. 가능하다면 Github에서 읽어주세요.</i>
 
 # 기능
@@ -60,3 +62,4 @@ console.log([builder1.build(), builder2.build()].join(''));
 
 # 기여자
   [![andjsrk](https://github.com/andjsrk.png?size=32)](https://github.com/andjsrk)
+  [![newkincode](https://github.com/newkincode.png?size=32)](https://github.com/newkincode)

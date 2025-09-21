@@ -10,9 +10,14 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Lukince/Hangul4deno">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Lukince/Hangul4deno">
   <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLukince%2FHangul4deno&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+
+  <h3 align="center"><b>translations : <a href="https://github.com/Lukince/Hangul4deno/blob/master/docs/README-ko.md">한국어</a></b></h3>
 </p>
+<br/>
 
   <i>Please check [README.md](https://github.com/Lukince/Hangul4deno/blob/master/README.md) on github if possible. it changes frequently.</i>
+
+
 
 # Features
 
@@ -60,3 +65,4 @@ console.log([builder1.build(), builder2.build()].join(''));
 
 # Contributors
   [![andjsrk](https://github.com/andjsrk.png?size=32)](https://github.com/andjsrk)
+  [![newkincode](https://github.com/newkincode.png?size=32)](https://github.com/newkincode)
